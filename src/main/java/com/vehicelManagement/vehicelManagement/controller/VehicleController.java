@@ -1,13 +1,17 @@
 package com.vehicelManagement.vehicelManagement.controller;
 
 import com.vehicelManagement.vehicelManagement.dto.VehicleDto;
+import com.vehicelManagement.vehicelManagement.dto.VehicleSaveDto;
+import com.vehicelManagement.vehicelManagement.dto.VehicleUpdateDto;
 import com.vehicelManagement.vehicelManagement.model.Vehicle;
 import com.vehicelManagement.vehicelManagement.service.VehicleService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @CrossOrigin("*")
@@ -31,7 +35,7 @@ public class VehicleController {
     }
 
     @PostMapping("/save")
-    public ResponseEntity<?> saveVehicle(@RequestBody VehicleDto vehicleDto) {
+    public ResponseEntity<?> saveVehicle(@RequestBody VehicleSaveDto vehicleDto) {
 
         try {
             VehicleDto savedVehicle = vehicleService.createVehicle(vehicleDto);
@@ -43,10 +47,10 @@ public class VehicleController {
         }
     }
 
-    @PutMapping ("/update/{id}")
+    @PutMapping("/update/{id}")
     public ResponseEntity<?> updateVehicle(
             @PathVariable int id,
-            @RequestBody VehicleDto dto) {
+            @RequestBody VehicleUpdateDto dto) {
 
         try {
             return ResponseEntity.ok(vehicleService.updateVehicle(id, dto));
@@ -63,6 +67,16 @@ public class VehicleController {
 
         } catch (RuntimeException ex) {
             return ResponseEntity.badRequest().body(ex.getMessage());
+        }
+    }
+
+    @GetMapping("/detailsOfVehicle/{id}")
+    public ResponseEntity<?> getVehicleDetails(@PathVariable int id) {
+        try {
+            return ResponseEntity.ok(vehicleService.getVehicleDetails(id));
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body(Map.of("message", e.getMessage()));
         }
     }
 

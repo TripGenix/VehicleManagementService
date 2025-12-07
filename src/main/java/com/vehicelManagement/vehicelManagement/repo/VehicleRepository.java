@@ -15,4 +15,9 @@ public interface VehicleRepository extends JpaRepository<Vehicle, Integer> {
 
     @Query(value = "select * from vehicle where is_delete=false", nativeQuery = true)
     List<Vehicle> getAllVehicles();
+
+    @Query(value = "select * from vehicle where vehicle_id=?1 and is_delete=false", nativeQuery = true)
+    Optional<Vehicle> getVehicleByVehicleId(Integer vehicleId);
+
+
 }

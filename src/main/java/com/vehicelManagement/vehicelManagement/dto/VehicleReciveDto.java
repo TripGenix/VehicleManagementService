@@ -6,11 +6,12 @@ import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class VehicleDto {
+public class VehicleReciveDto {
     private Integer vehicleId;
     private String numberPlate;
     private String type;
@@ -21,4 +22,9 @@ public class VehicleDto {
     private String status;
     private LocalDateTime createdAt;
     private String vehicleName;
+    private List<String> vehicleImages;
+    private String documentUrl;
+
+
+    private OwnerDto owner;
 }

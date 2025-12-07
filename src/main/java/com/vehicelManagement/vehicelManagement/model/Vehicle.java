@@ -42,5 +42,15 @@ public class Vehicle {
     @Column(name = "is_delete")
     private Boolean isDelete = false;
 
+    @Column(name="vehicle_name")
+    private String vehicleName;
+
+    @Column(name="document_url")
+    private String documentUrl;
+
+    // FK to owner table
+    @ManyToOne
+    @JoinColumn(name = "owner_id", nullable = false)
+    private Owner owner;
 
 }
