@@ -23,7 +23,7 @@ public class Vehicle {
 
     @Column(name = "number_plate")
     private String numberPlate;
-    private String type;
+    private Integer type;
     private String description;
     @Column(name = "passenger_count")
     private Integer passengerCount;

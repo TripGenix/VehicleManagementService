@@ -12,7 +12,7 @@ import java.util.List;
 public class VehicleUpdateDto {
     private String vehicleName;
     private String vehicleNumber;
-    private String category;
+    private Integer category;
     private String description;
     private int passengerCount;
     private double costPerKm;

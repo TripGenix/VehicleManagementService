@@ -154,7 +154,7 @@ public class VehicleService {
         if (dto.getVehicleImages() != null && !dto.getVehicleImages().isEmpty()) {
 
             // Delete all old images
-            vehicleImageRepository.deleteByVehicle_VehicleId(vehicle.getVehicleId());
+            //vehicleImageRepository.deleteByVehicle_VehicleId(vehicle.getVehicleId());
 
             // Save new images
             for (String url : dto.getVehicleImages()) {

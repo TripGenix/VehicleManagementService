@@ -15,7 +15,7 @@ import java.util.List;
 public class VehicleSaveDto {
     private String vehicleName;
     private String vehicleNumber;   // renamed from numberPlate if needed
-    private String category;
+    private Integer category;
     private Integer passengerCount;
     private BigDecimal costPerKm;
     private BigDecimal bookingPrice;
